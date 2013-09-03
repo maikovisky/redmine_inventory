@@ -1,7 +1,7 @@
 # English strings go here for Rails i18n
 en:
   inventory_label: "Inventory"
-  inventory_type_label: "Tipo"
+  inventory_type_label: "Type"
   inventory_new: "Add Inventory"
   inventory_list: "Inventory"
   inventory_new_brand: "Add Brand"

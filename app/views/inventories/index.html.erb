@@ -20,6 +20,8 @@
 		<th><%=t :field_inventory %></th>
 		<th><%=t :field_brand %></th>
 		<th><%=t :field_model %></th>
+		<th><%=t :field_consumption %></th>
+		<th><%=t :field_price %></th>
 		<th>&nbsp;</th>
 	</tr>
 </thead>
@@ -32,6 +34,8 @@
 		<td><%=t i.inventoryid %></td>
 		<td><%= link_to i.inventory_brand.name, inventory_brand_path(i.inventory_brand)  %></td>
 		<td><%=t i.model %></td>
+		<td align="right"><%= i.consumption %></td>
+		<td align="right"><%= number_to_currency(i.price) %></td>
 		<td>
 			<%= link_to "", edit_inventory_path(i), :class => "icon icon-edit" %>
 			<%= link_to "", inventory_path(i), :confirm=> "Are you sure?", :class => "icon icon-del", :method => :delete %>
@@ -39,6 +43,14 @@
 		</td>
 		</tr>
 	<% end %>
+	<tfoot>
+		<tr>
+		<th align="right" colspan="7">Total</th>
+		<th align="right"><%= @total_consumption =%></th>
+		<th align="right"><%= number_to_currency(@total_price) =%></th>
+		<th>&nbsp</th>
+		</tr>
+	</tfoot>
 </table>
 <% end %>
 

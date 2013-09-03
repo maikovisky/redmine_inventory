@@ -6,6 +6,8 @@ class InventoriesController < ApplicationController
 
   def index
 	@inventories = Inventory.find(:all, :order => "name asc", :joins=> [:inventory_type, :inventory_brand]);
+	@total_consumption = Inventory.sum('consumption')
+	@total_price = Inventory.sum('price')
   end
 
   def new
@@ -37,7 +39,8 @@ class InventoriesController < ApplicationController
   end
 
   def update
-    @inventory= params[:inventory]
+    @inventory = Inventory.find(params[:id])
+    @inventory.update_attributes(params[:inventory])
     if @inventory.save
 		flash[:notice] = l(:notice_successful_update)
 		redirect_to({:action=>'index'})

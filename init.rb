@@ -7,20 +7,26 @@ Redmine::Plugin.register :inventory do
   author_url 'http://maikovisky.com'
 
   permission :view_inventory,  {
-								:inventory => [:index, :show, :print], 
-								:inventory_types => [:index, :show]
+								:inventories => [:index, :show, :print], 
+								:inventory_types => [:index, :show],
+								:inventory_locates => [:index, :show],
+								:inventory_brands => [:index, :show]
 								}
-  permission :manage_inventory, {:inventory => [:destroy, :update, :create, :edit, :new]}
+  permission :manage_inventory, {
+								:inventories => [:destroy, :update, :create, :edit, :new, :index, :show, :print],
+								:inventory_types => [:destroy, :update, :create, :edit, :new, :index, :show],
+								:inventory_locates => [:destroy, :update, :create, :edit, :new, :index, :show],
+								:inventory_brands => [:destroy, :update, :create, :edit, :new, :index, :show],
+								}
   permission :allow_inventory_check_ins, {:inventory_check_ins => [ :new, :create, :loclist ]}
 
 
   menu :top_menu, "Inventory",
     { :controller => 'inventories', :action => 'index' },
-      :caption => :inventory_label, :after => :projects
-	
-#    :if => Proc.new {
-#      User.current.allowed_to?(:view_inventory, nil, :global => true)
-#  }
+      :caption => :inventory_label, :after => :projects,
+      :if => Proc.new {
+        User.current.allowed_to?(:view_inventory, nil, :global => true)
+      }
 
 
 end

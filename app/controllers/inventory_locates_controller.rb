@@ -25,6 +25,12 @@ class InventoryLocatesController < ApplicationController
   end
 
   def update
+    @inventory_locate = InventoryiLocate.find(params[:id])
+    @inventory_locate.update_attributes(params[:inventory_ilocate])
+    if @inventory_locate.save
+		flash[:notice] = l(:notice_successful_update)
+		redirect_to({:action=>'index'})
+	end
   end
 
   def show

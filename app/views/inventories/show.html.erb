@@ -1,5 +1,6 @@
 <% html_title t(:inventory_label) %>
 <div class="contextual">
+	<%= link_to t(:edit),    edit_inventory_path(@inventory), :class => "icon icon-edit" %>
 	<%= link_to t(:inventory_list),    inventories_path, :class => "icon icon-report" %>
 	<%= link_to t(:inventory_list_brand),  inventory_brands_path, :class => "icon icon-report" %>
 	<%= link_to t(:inventory_list_type),   inventory_types_path, :class => "icon icon-report" %>

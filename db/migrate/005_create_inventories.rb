@@ -5,7 +5,7 @@ class CreateInventories < ActiveRecord::Migration
       t.string :serial
       t.string :inventoryid
       t.string :model
-      t.decimal :price, :precision => 5, :scale => 2
+      t.decimal :price, :precision => 10, :scale => 2
       t.integer :consumption
       t.text :comment
       t.boolean :outofservice, :null => false, :default => false
