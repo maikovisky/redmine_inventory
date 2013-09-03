@@ -1,0 +1,31 @@
+<% html_title t(:inventory_label) %>
+<div class="contextual">
+	<%= link_to t(:inventory_list),    inventories_path, :class => "icon icon-report" %>
+	<%= link_to t(:inventory_list_brand),  inventory_brands_path, :class => "icon icon-report" %>
+	<%= link_to t(:inventory_list_type),   inventory_types_path, :class => "icon icon-report" %>
+	<%= link_to t(:inventory_list_locate), inventory_locates_path, :class => "icon icon-report" %>
+</div>
+
+<h1><%= l(:h1_inventory_show) %>: <%= @inventory.name %></h1>
+<table>
+<tr><th align="right"><%=l(:field_serial)%>:</th><td> <%= @inventory.serial %></td></tr>
+<tr><th align="right"><%=l(:field_inventoryid)%>:</th><td><%= @inventory.inventoryid %></td></tr>
+<tr><th align="right"><%=l(:field_inventory_type)%>:</th><td><%= @inventory.inventory_type.name %></td></tr>
+<tr><th align="right"><%=l(:field_inventory_brand)%> / <%=l(:field_model)%></th><td><%= @inventory.inventory_brand.name %> / <%=@inventory.model%></td></tr>
+<tr><th align="right"><%=l(:field_price)%>:</th><td>$<%= @inventory.price %></td></tr>
+<tr><th align="right"><%=l(:field_consumption)%>:</th><td><%= @inventory.consumption %> watts</td></tr>
+</table>
+<% if @inventory.inventory_checkins.empty? %>
+	<p class="nodata">No checkin to display</p>
+<% else %>
+<h2><%= l(:h2_inventory_show_checkin)%></h2>
+<table>
+<% @inventory.inventory_checkins.each do |c| %>
+	<tr>
+	<td><%= link_to c.user.firstname, user_path(c.user) %></td>
+	<td><%= c.create_at %></td>
+	<td><%= c.comment %></td>
+	</tr>
+<% end %>
+</table>
+<% end %>

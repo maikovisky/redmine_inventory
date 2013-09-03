@@ -1,0 +1,13 @@
+
+<div class="box tabular">
+	<p><%= f.text_field :name, :required =>true, :size=>60 %></p>
+	<p><%= f.select :inventory_type_id, @inventory_type.map{|c| [c.name, c.id]}, :include_blank => true, :required=>true %></p>
+	<p><%= f.select :inventory_brand_id, @inventory_brand.map{|c| [c.name, c.id]}, :include_blank => true, :required=>true %></p>
+	<p><%= f.text_field :serial, :required =>true, :size=>60 %></p>
+	<p><%= f.text_field :inventoryid, :required =>true, :size=>60 %></p>
+	<p><%= f.text_field :model, :size=>60 %></p>
+	<p><%= f.text_field :price, :size=>60 %></p>
+	<p><%= f.text_field :consumption, :size=>60 %></p>
+	<p><%= f.text_area :comment, :required =>true, :rows=>5, :cols=>60 %></p>
+	<p><%= f.check_box :outofservice, :size=>60 %></p>
+</div>

@@ -1,0 +1,44 @@
+<% html_title t(:inventory_label) %>
+<div class="contextual">
+	<%= link_to t(:inventory_new), new_inventory_path, :class => "icon icon-add" %>
+	<%= link_to t(:inventory_list_brand),  inventory_brands_path, :class => "icon icon-report" %>
+	<%= link_to t(:inventory_list_type),   inventory_types_path, :class => "icon icon-report" %>
+	<%= link_to t(:inventory_list_locate), inventory_locates_path, :class => "icon icon-report" %>
+</div>
+<h2>Inventory List</h2>
+
+<% if @inventories.empty? %>
+	<p class="nodata">No data to display</p>
+<% else %>
+<table class="list" width="60%">
+<thead>
+	<tr>
+		<th>Id</th>
+		<th><%=t :field_name %></th>
+		<th><%=t :field_type %></th>
+		<th><%=t :field_serial %></th>
+		<th><%=t :field_inventory %></th>
+		<th><%=t :field_brand %></th>
+		<th><%=t :field_model %></th>
+		<th>&nbsp;</th>
+	</tr>
+</thead>
+	<% @inventories.each do |i| %>
+		<tr>
+		<td align="center"><%= link_to i.id, inventory_path(i)%></th>
+		<td><%= link_to i.name, inventory_path(i) %></td>
+		<td><%=t i.inventory_type.name %></td>
+		<td><%=t i.serial %></td>
+		<td><%=t i.inventoryid %></td>
+		<td><%= link_to i.inventory_brand.name, inventory_brand_path(i.inventory_brand)  %></td>
+		<td><%=t i.model %></td>
+		<td>
+			<%= link_to "", edit_inventory_path(i), :class => "icon icon-edit" %>
+			<%= link_to "", inventory_path(i), :confirm=> "Are you sure?", :class => "icon icon-del", :method => :delete %>
+			<%= link_to "", new_inventory_checkin_path(:inventory_id=>i), :class => "icon icon-package" %>
+		</td>
+		</tr>
+	<% end %>
+</table>
+<% end %>
+

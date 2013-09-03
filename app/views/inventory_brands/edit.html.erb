@@ -1,0 +1,14 @@
+<% html_title t(:inventory_label) %>
+<div class="contextual">
+	<%= link_to t(:inventory_list_brand),  inventory_brands_path, :class => "icon icon-report" %>
+	<%= link_to t(:inventory_list), inventory_path, :class => "icon icon-report" %>
+	<%= link_to t(:inventory_list_type),  inventory_types_path, :class => "icon icon-report" %>
+	<%= link_to t(:inventory_list_locate),  inventory_locates_path, :class => "icon icon-report" %>
+</div>
+
+<h1><%= l(:h1_inventory_brand_edit) %></h1>
+
+<%= labelled_form_for(@inventory_brand) do |f| %>
+<%= render :partial => 'form', :locals => {:f => f} %>
+<%= submit_tag l(:button_save) %>
+<% end %>

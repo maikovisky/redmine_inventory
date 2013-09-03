@@ -1,0 +1,19 @@
+<% html_title t(:inventory_label) %>
+<div class="contextual">
+	<%= link_to t(:inventory_list), inventories_path, :class => "icon icon-report" %>
+	<%= link_to t(:inventory_list_brand),  inventory_brands_path, :class => "icon icon-report" %>
+	<%= link_to t(:inventory_list_type),  inventory_types_path, :class => "icon icon-report" %>
+	<%= link_to t(:inventory_list_locate),  inventory_locates_path, :class => "icon icon-report" %>
+</div>
+
+
+<h1><%= l(:h1_inventory_checkin)%>: <%= @inventory.name %></h1>
+<%= labelled_form_for(@inventory_checkin) do |f| %>
+<div class="box tabular">
+	<p><%= f.select :inventory_locate_id, @inventory_locate.map{|c| [c.name, c.id]}, :include_blank => true, :required=>true %></p>
+	<p><%= f.select :user_id, @user.map{|c| [c.name, c.id]}, :include_blank => true, :required=>true %></p>
+	<p><%= f.text_area :comment %></p>
+	<%= f.hidden_field :inventory_id%>
+</div>
+<%= submit_tag l(:button_create) %>
+<% end %>

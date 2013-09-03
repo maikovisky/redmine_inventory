@@ -1,0 +1,17 @@
+<% html_title t(:inventory_label) %>
+<div class="contextual">
+	<%= link_to t(:inventory_new_type),  new_inventory_type_path, :class => "icon icon-add" %>
+	<%= link_to t(:inventory_list), inventories_path, :class => "icon icon-report" %>
+	<%= link_to t(:inventory_new_brand),  inventory_brands_path, :class => "icon icon-report" %>
+	<%= link_to t(:inventory_new_locate), inventory_locates_path, :class => "icon icon-report" %>
+</div>
+
+<h1><%= l(:new_inventory_type) %></h1>
+<div class="box tabular">
+
+
+<%= labelled_form_for(@inventory_type) do |f| %>
+    <p><%= f.text_field :name, :required => true, :size => 60 %></p>
+	<%= submit_tag l(:button_create) %>
+<% end %>
+</div>
