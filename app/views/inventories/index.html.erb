@@ -20,6 +20,8 @@
 		<th><%=t :field_inventory %></th>
 		<th><%=t :field_brand %></th>
 		<th><%=t :field_model %></th>
+		<th><%=t :field_user %></th>
+		<th><%=t :field_locate %></th>
 		<th><%=t :field_consumption %></th>
 		<th><%=t :field_price %></th>
 		<th>&nbsp;</th>
@@ -29,11 +31,13 @@
 		<tr>
 		<td align="center"><%= link_to i.id, inventory_path(i)%></th>
 		<td><%= link_to i.name, inventory_path(i) %></td>
-		<td><%=t i.inventory_type.name %></td>
 		<td><%=t i.serial %></td>
+		<td><%=t i.inventory_type.name%></td>
 		<td><%=t i.inventoryid %></td>
 		<td><%= link_to i.inventory_brand.name, inventory_brand_path(i.inventory_brand)  %></td>
 		<td><%=t i.model %></td>
+		<td></td>
+		<td></td>
 		<td align="right"><%= i.consumption %></td>
 		<td align="right"><%= number_to_currency(i.price) %></td>
 		<td>
@@ -45,7 +49,7 @@
 	<% end %>
 	<tfoot>
 		<tr>
-		<th align="right" colspan="7">Total</th>
+		<th align="right" colspan="9">Total</th>
 		<th align="right"><%= @total_consumption =%></th>
 		<th align="right"><%= number_to_currency(@total_price) =%></th>
 		<th>&nbsp</th>

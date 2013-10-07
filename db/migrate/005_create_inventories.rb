@@ -4,6 +4,7 @@ class CreateInventories < ActiveRecord::Migration
       t.string :name
       t.string :serial
       t.string :inventoryid
+      t.string :macaddress
       t.string :model
       t.decimal :price, :precision => 10, :scale => 2
       t.integer :consumption
@@ -12,5 +13,9 @@ class CreateInventories < ActiveRecord::Migration
       t.belongs_to :inventory_type
       t.belongs_to :inventory_brand
     end
+  end
+
+  def down
+    drop_table :inventories
   end
 end

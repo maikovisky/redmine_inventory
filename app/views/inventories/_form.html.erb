@@ -4,6 +4,7 @@
 	<p><%= f.select :inventory_type_id, @inventory_type.map{|c| [c.name, c.id]}, :include_blank => true, :required=>true %></p>
 	<p><%= f.select :inventory_brand_id, @inventory_brand.map{|c| [c.name, c.id]}, :include_blank => true, :required=>true %></p>
 	<p><%= f.text_field :serial, :required =>true, :size=>60 %></p>
+	<p><%= f.text_field :macaddress, :size=>60 %></p>
 	<p><%= f.text_field :inventoryid, :required =>true, :size=>60 %></p>
 	<p><%= f.text_field :model, :size=>60 %></p>
 	<p><%= f.text_field :price, :size=>60 %></p>

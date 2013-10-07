@@ -26,6 +26,7 @@ en:
   field_inventory_brand: "Marca"
   field_inventoryid: "Patrimonio"
   field_inventory_locate: "Locate"
+  field_macaddress: "Endereço MAC"
   new_inventory_type: "New Inventory Type" 
   h1_inventory_new: "Novo Rquipamento"
   h1_inventory_list: "Equipamentos"

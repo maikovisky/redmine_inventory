@@ -1,3 +1,3 @@
 class InventoryLocate < ActiveRecord::Base
-  unloadable
+	has_many :invetory_checkins
 end

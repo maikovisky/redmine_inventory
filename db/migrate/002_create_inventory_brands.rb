@@ -4,4 +4,8 @@ class CreateInventoryBrands < ActiveRecord::Migration
       t.string :name
     end
   end
+
+  def down
+     drop_table :inventory_brands
+  end
 end

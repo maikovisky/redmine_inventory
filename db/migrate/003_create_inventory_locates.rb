@@ -6,4 +6,8 @@ class CreateInventoryLocates < ActiveRecord::Migration
       t.string :city
     end
   end
+
+  def down
+    drop_table :inventory_locates
+  end
 end

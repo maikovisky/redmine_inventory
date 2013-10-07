@@ -9,4 +9,8 @@ class CreateInventoryCheckins < ActiveRecord::Migration
       t.belongs_to :user
     end
   end
+
+  def down
+    drop_table :inventory_checkins
+  end
 end
